@@ -1,7 +1,7 @@
 const taskForm = document.getElementById("taskForm");
 const taskList = document.getElementById("taskList");
 
-const API_URL = "http://localhost:3000/tasks";
+const API_URL = "https://todo-api.onrender.com/tasks";
 
 // Fetch tasks
 const fetchTasks = async () => {
