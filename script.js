@@ -18,7 +18,7 @@ const fetchTasks = async () => {
             .map(
                 (task) => `
                     <li>
-                        <span>${task.title} - ${task.completed ? "✅" : "❌"}</span>
+                        <span>${task.title} - ${task.description || "No description"} - ${task.completed ? "✅" : "❌"}</span>
                         <button onclick="deleteTask('${task._id}')">Delete</button>
                         <button onclick="toggleComplete('${task._id}', ${task.completed})">Toggle Complete</button>
                     </li>
@@ -30,6 +30,7 @@ const fetchTasks = async () => {
         alert("Unable to fetch tasks. Please try again later.");
     }
 };
+
 
 // Add task
 taskForm.addEventListener("submit", async (e) => {
