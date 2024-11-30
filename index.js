@@ -20,7 +20,7 @@ mongoose
     .catch((err) => console.error("MongoDB connection error:", err));
 
 // Task Model
-const Task = require("./models/task");
+const Task = require("./task");
 
 // Routes
 app.get("/tasks", async (req, res) => {
