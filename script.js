@@ -105,5 +105,3 @@ const toggleComplete = async (id, completed) => {
 fetchTasks();
 
 
-// Initial fetch
-fetchTasks();
