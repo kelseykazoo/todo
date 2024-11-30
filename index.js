@@ -25,17 +25,23 @@ mongoose
 const Task = require("./task");
 
 // Routes
-app.get("/tasks", async (req, res) => {
-    const tasks = await Task.find();
-    res.json(tasks);
+app.post("/tasks", async (req, res) => {
+    const { title, description } = req.body;
+
+    if (!title) {
+        return res.status(400).json({ error: "Task title is required" });
+    }
+
+    const task = new Task({ title, description, completed: false });
+
+    try {
+        const savedTask = await task.save();
+        res.status(201).json(savedTask);
+    } catch (error) {
+        res.status(500).json({ error: "Error saving task" });
+    }
 });
 
-app.post("/tasks", async (req, res) => {
-    const { title, description, deadline } = req.body;
-    const task = new Task({ title, description, deadline, completed: false });
-    await task.save();
-    res.status(201).json(task);
-});
 
 app.put("/tasks/:id", async (req, res) => {
     const { id } = req.params;
